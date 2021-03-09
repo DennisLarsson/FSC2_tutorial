@@ -25,6 +25,8 @@ names_line_start = '#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT'
 name_line = ""
 for i in popmap:
 	indv = i[0].replace("_","")
+	indv = indv.replace("-","")
+	indv = indv.replace(".","")
 	new_name = indv + "." + i[1]
 	name_line = name_line + "\t" + new_name
 
@@ -48,5 +50,7 @@ os.system('rm ' + vcf_wd + 'temp_vcfheader ' + vcf_wd + 'temp_vcfcontent ' + vcf
 with open (vcf_wd + 'new_popmap','w') as new_popmap_file:
 	for i in popmap:
 		indv = i[0].replace("_","")
+		indv = indv.replace("-","")
+		indv = indv.replace(".","")
 		indv = indv + "." + i[1]
 		new_popmap_file.write(indv + "\t" + i[1] + "\n")
